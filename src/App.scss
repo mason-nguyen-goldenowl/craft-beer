@@ -1,0 +1,74 @@
+@use './scss/' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+
+  background-color: $body-bg;
+  color: $txt-color;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+.container {
+  padding: 0 250px;
+}
+
+.btn {
+  padding: 14px 33px;
+  font-size: 14px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid $main-color;
+  color: $txt-color;
+
+  &:hover {
+    background-color: $second-color;
+  }
+}
+
+.btn-bg {
+  background-color: #1a73e8 !important;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #99beee36 !important;
+    color: #0d71f3;
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-left: 10px;
+}
