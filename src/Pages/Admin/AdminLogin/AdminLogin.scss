@@ -1,0 +1,32 @@
+@use "../../../scss/" as *;
+
+.admin-login {
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  &__form {
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      padding: 50px 40px;
+      border: 1px solid $main-color;
+      h1 {
+        color: $main-color;
+        margin-bottom: 30px;
+      }
+    }
+    &__item {
+      margin-bottom: 30px;
+      &-submit {
+        text-align: center;
+        button {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

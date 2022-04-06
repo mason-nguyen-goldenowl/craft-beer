@@ -1,0 +1,57 @@
+@use '../../scss/' as *;
+.shop {
+  &__wrap {
+    color: #000;
+    margin: 20px;
+    border: 1px solid $main-color;
+  }
+  &__content {
+    display: flex;
+  }
+  &__products {
+    width: 75%;
+    display: flex;
+    & :first-child {
+      & ::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background-color: $main-color;
+        opacity: 0.8;
+      }
+    }
+    & :last-child {
+      & ::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background-color: $main-color;
+        opacity: 0.8;
+      }
+    }
+  }
+  &__sub-menu {
+    width: 25%;
+    h4 {
+      margin-bottom: 20px;
+    }
+    &__slider,
+    &__types {
+      margin-bottom: 50px;
+    }
+    .types__list {
+      &-item {
+        list-style: none;
+
+        color: $second-color;
+        font-style: italic;
+      }
+    }
+  }
+}

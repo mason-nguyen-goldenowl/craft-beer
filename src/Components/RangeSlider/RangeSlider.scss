@@ -1,0 +1,14 @@
+@use '../../scss/' as *;
+.range-slider {
+  color: black;
+  h3 {
+    font-size: 14px;
+  }
+  &__submit {
+    display: flex;
+    align-items: center;
+  }
+  &__result {
+    margin-left: 10px;
+  }
+}

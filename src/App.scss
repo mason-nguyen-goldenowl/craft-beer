@@ -17,7 +17,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   line-height: 1.5;
-
+  overflow-x: hidden;
   background-color: $body-bg;
   color: $txt-color;
 }
@@ -28,7 +28,7 @@ a {
 }
 
 .container {
-  padding: 0 250px;
+  padding: 200px 250px;
 }
 
 .btn {
@@ -43,27 +43,10 @@ a {
 .btn-outline {
   background-color: transparent;
   border: 1px solid $main-color;
-  color: $txt-color;
 
   &:hover {
     background-color: $second-color;
-  }
-}
-
-.btn-bg {
-  background-color: #1a73e8 !important;
-  color: white;
-  font-size: 16px;
-  font-weight: 800;
-  border: none;
-  cursor: pointer;
-  padding: 10px 15px;
-  transition: all 0.3s;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: #99beee36 !important;
-    color: #0d71f3;
+    color: #fff;
   }
 }
 

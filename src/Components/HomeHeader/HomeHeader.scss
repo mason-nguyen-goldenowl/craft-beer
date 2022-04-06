@@ -10,11 +10,30 @@
 
 .home-header {
   position: relative;
+  .sub-menu-wrap {
+    transform: translateX(100vw);
+    &.active {
+      transform: translateX(0);
+      z-index: 98;
+    }
+  }
+
   &__menu-btn {
     position: absolute;
+    top: 5%;
+    left: 2%;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 99;
+  }
+  &__brand-img {
+    position: absolute;
     top: 0;
-    width: 30px;
-    height: 30px;
+    right: 3%;
+    img {
+      width: 194px;
+      height: 205px;
+    }
   }
 }
 
