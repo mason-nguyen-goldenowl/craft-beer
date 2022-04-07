@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import subMenuLogo from '../../asset/header/h5-logo-menu.png';
 
@@ -16,7 +17,9 @@ export default function SubMenu(props) {
           <ul className="sub-menu__list-item">
             <li className="sub-menu__item active">Home</li>
             <li className="sub-menu__item">Page</li>
-            <li className="sub-menu__item">Shop</li>
+            <Link to="/shop">
+              <li className="sub-menu__item">Shop</li>
+            </Link>
             <li className="sub-menu__item">Blog</li>
             <li className="sub-menu__item">Landing</li>
           </ul>

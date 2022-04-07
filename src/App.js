@@ -7,6 +7,7 @@ import OrdersAdmin from './Pages/Admin/OrdersAdmin/OrdersAdmin';
 
 import Home from './Pages/Home/Home';
 import Shop from './Pages/Shop/Shop';
+import SignUp from './Pages/Sign Up/SignUp';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/orders" element={<OrdersAdmin />} />

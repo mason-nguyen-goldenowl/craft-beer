@@ -48,9 +48,12 @@
     .types__list {
       &-item {
         list-style: none;
-
         color: $second-color;
         font-style: italic;
+        transition: all 0.3s;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

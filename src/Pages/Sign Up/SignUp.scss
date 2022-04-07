@@ -1,0 +1,28 @@
+@use '../../scss/' as *;
+
+.sign-up {
+  &__wrap {
+    color: black;
+  }
+  &__form {
+    &-logo {
+      background-color: $main-color;
+      width: fit-content;
+      border-radius: 50%;
+      line-height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      svg {
+        font-size: 50px;
+      }
+    }
+    &-data {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
