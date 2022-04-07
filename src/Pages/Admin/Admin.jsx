@@ -1,23 +1,31 @@
+import './Admin.scss';
+
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
+import { useNavigate } from 'react-router-dom';
 
+import AddProductForm from '../../Components/AddProductform/AddProductForm';
+import AdminProductTable from '../../Components/AdminProductTable/AdminProductTable';
+import ListItemAdmin from '../../Components/ListItemAdmin/ListItemAdmin';
 import Modal from '../../Components/Modal/Modal';
 import { getProduct } from '../../redux/actions/productAction';
 import { selectProducts } from '../../redux/features/productsSlice';
-import ListItemAdmin from '../../Components/ListItemAdmin/ListItemAdmin';
-import AddProductForm from '../../Components/AddProductform/AddProductForm';
-import AdminProductTable from '../../Components/AdminProductTable/AdminProductTable';
-
-import './Admin.scss';
 
 export default function Admin() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { products } = useSelector(selectProducts);
   const [modalOpen, setModalOpen] = useState(false);
   const [productSelected, setProductSelected] = useState('');
+  const isAdmin = Cookies.get('isAdmin');
+  const refreshToken = Cookies.get('refresh_token');
 
   useEffect(() => {
+    if (!isAdmin || !refreshToken) {
+      return navigate('/admin/login');
+    }
     const action = getProduct;
     dispatch(action());
   }, [products]);

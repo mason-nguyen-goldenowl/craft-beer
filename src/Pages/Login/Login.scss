@@ -1,6 +1,6 @@
 @use '../../scss/' as *;
 
-.sign-up {
+.login {
   &__wrap {
     display: flex;
     justify-content: center;
@@ -12,25 +12,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    &-logo {
-      background-color: $main-color;
-      width: fit-content;
-      border-radius: 50%;
-      line-height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-
-      svg {
-        font-size: 30px;
-      }
-    }
-
-    h4 {
-      margin-bottom: 30px;
-      font-size: 30px;
-    }
     &-data {
       display: flex;
       justify-content: center;
@@ -39,6 +20,11 @@
         flex-direction: column;
         margin-right: 30px;
       }
+    }
+    h4 {
+      margin-bottom: 30px;
+      font-size: 30px;
+      color: black;
     }
   }
 }

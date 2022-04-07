@@ -23,5 +23,33 @@ export const craftBeerApi = {
 
   getOrders: () => {
     return axiosClient.get('/orders');
+  },
+
+  signUp: (user) => {
+    return axiosClient.post('/users/signup', user);
+  },
+
+  addToCart: (id) => {
+    return axiosClient.post(`/products/cart/add/${id}`);
+  },
+
+  getCart: () => {
+    return axiosClient.get('/carts');
+  },
+
+  increasingCartItem: (id) => {
+    return axiosClient.post(`/cart-item/increasing/${id}`);
+  },
+
+  decreasingCartItem: (id) => {
+    return axiosClient.post(`/cart-item/decreasing/${id}`);
+  },
+
+  deleteCartItem: (id) => {
+    return axiosClient.delete(`/cart-item/delete/${id}`);
+  },
+
+  createOrder: () => {
+    return axiosClient.post('/orders/create');
   }
 };

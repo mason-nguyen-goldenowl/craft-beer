@@ -22,10 +22,8 @@
   }
   &__img {
     position: relative;
-    border-left: 1px solid $main-color;
-    border-right: 1px solid $main-color;
     margin-right: 15px;
-
+    cursor: pointer;
     img {
       max-width: 100px;
       max-height: 150px;

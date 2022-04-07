@@ -6,6 +6,7 @@ import AdminLogin from './Pages/Admin/AdminLogin/AdminLogin';
 import OrdersAdmin from './Pages/Admin/OrdersAdmin/OrdersAdmin';
 
 import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
 import Shop from './Pages/Shop/Shop';
 import SignUp from './Pages/Sign Up/SignUp';
 
@@ -16,6 +17,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/orders" element={<OrdersAdmin />} />

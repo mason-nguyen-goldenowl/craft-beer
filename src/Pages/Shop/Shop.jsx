@@ -1,23 +1,44 @@
-import React, { Fragment } from 'react';
+import './Shop.scss';
+
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Cart from '../../Components/Cart/Cart';
+
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import RangeSlider from '../../Components/RangeSlider/RangeSlider';
 import ShopHeader from '../../Components/ShopHeader/ShopHeader';
 import SuggestProductCard from '../../Components/SuggestProductCard/SuggestProductCard';
-import './Shop.scss';
+import { getCartAction, getProduct } from '../../redux/actions/productAction';
+import { selectProducts } from '../../redux/features/productsSlice';
+
 export default function Shop() {
   const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
+  const dispatch = useDispatch();
+  const { products } = useSelector(selectProducts);
+
+  const renderProduct = () => {
+    return products.map((product) => {
+      return <ProductCard product={product} key={product.name} />;
+    });
+  };
+  const renderSuggest = () => {
+    const productSuggest = products.slice(0, 3);
+    return productSuggest.map((product) => {
+      return <SuggestProductCard product={product} key={product.name} />;
+    });
+  };
+
+  useEffect(() => {
+    const action = getProduct;
+    dispatch(action());
+    dispatch(getCartAction());
+  }, []);
   return (
     <Fragment>
       <ShopHeader />
       <div className="shop__wrap">
         <div className="shop__content container">
-          <div className="shop__products">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </div>
+          <div className="shop__products">{renderProduct()}</div>
           <div className="shop__sub-menu">
             <div className="shop__sub-menu__slider">
               <RangeSlider />
@@ -36,9 +57,7 @@ export default function Shop() {
             </div>
             <div className="shop__sub-menu__top-suggest">
               <h4>TOP SUGGEST</h4>
-              <SuggestProductCard />
-              <SuggestProductCard />
-              <SuggestProductCard />
+              {renderSuggest()}
             </div>
           </div>
         </div>

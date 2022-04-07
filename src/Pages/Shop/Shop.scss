@@ -9,8 +9,9 @@
     display: flex;
   }
   &__products {
-    width: 75%;
+    max-width: 75%;
     display: flex;
+    flex-wrap: wrap;
     & :first-child {
       & ::before {
         content: '';
@@ -37,7 +38,7 @@
     }
   }
   &__sub-menu {
-    width: 25%;
+    max-width: 20%;
     h4 {
       margin-bottom: 20px;
     }

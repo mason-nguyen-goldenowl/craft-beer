@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import AddProductForm from '../AddProductform/AddProductForm';
 import Modal from '../Modal/Modal';
 
@@ -35,9 +36,10 @@ const FireNav = styled(List)({
   }
 });
 
-export default function ListItemAdmin({ setProductSelected }) {
+export default function ListItemAdmin() {
   const [open, setOpen] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <Box sx={{ display: 'flex', height: '100vh' }}>
       <ThemeProvider
