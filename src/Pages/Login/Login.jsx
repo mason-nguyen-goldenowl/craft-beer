@@ -4,34 +4,39 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { TextField } from '@mui/material';
 import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { signIn } from '../../redux/actions/usersAction';
 import { regExpEmail } from '../../ultil/regExp/regExp';
-import { useNavigate } from 'react-router-dom';
+import { selectUsers } from '../../redux/features/userSlice';
 
 export default function Login() {
+  const refreshToken = Cookies.get('refresh_token');
+  const isLogged = Cookies.get('isLogged');
+  const { isLoggedSusscess } = useSelector(selectUsers);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordValid, setPasswordValid] = useState(false);
-  const [emailValid, setEmailValid] = useState(false);
-  const isLogged = Cookies.get('isLogged');
-  const refreshToken = Cookies.get('refresh_token');
+  const [passwordValid, setPasswordValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (passwordValid && emailValid) {
       let values = { email, password };
       const action = signIn;
       dispatch(action(values));
+
+      navigate('/');
     }
   };
+
   useEffect(() => {
     if (isLogged && refreshToken) {
-      return navigate('/shop');
+      navigate('/');
     }
-  }, []);
+  }, [isLogged, navigate, refreshToken, isLoggedSusscess]);
   return (
     <Fragment>
       <div className="login__wrap">

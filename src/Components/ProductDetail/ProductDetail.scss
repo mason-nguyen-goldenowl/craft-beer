@@ -1,0 +1,66 @@
+@use '../../scss/' as *;
+
+.product-detail {
+  display: flex;
+  max-width: 800px;
+  &__img {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $main-color;
+    border-right: 1px solid $main-color;
+    img {
+      max-width: 400px;
+    }
+  }
+
+  &__content {
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      margin-left: 50px;
+      max-width: 50%;
+    }
+
+    &-name {
+      letter-spacing: 8px;
+      font-size: 24px;
+    }
+
+    &-description {
+      letter-spacing: 3px;
+      font-size: 16px;
+      margin-top: 30px;
+    }
+
+    &-price {
+      font-weight: 700;
+      font-size: 20px;
+      font-style: italic;
+      color: $second-color;
+    }
+  }
+  &__wrap {
+    background-color: $white;
+    padding: 80px;
+    min-width: 900px;
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 25px;
+    cursor: pointer;
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: none;
+    }
+  }
+}

@@ -3,13 +3,29 @@ import './SignUp.scss';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { City, Country, State } from 'country-state-city';
-import React, { Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
-
-import { signUp } from '../../redux/actions/usersAction';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { signUpAction } from '../../redux/actions/usersAction';
+import { selectUsers } from '../../redux/features/userSlice';
 import { regExpEmail, regExpPassword } from '../../ultil/regExp/regExp';
 
 export default function SignUp() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom',
+    showConfirmButton: false,
+    timer: 3000,
+    color: '#dab879',
+    iconColor: '#dab879',
+    background: '#000',
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    }
+  });
   const dispatch = useDispatch();
   const arrCountry = Country.getAllCountries();
   const [countrySelect, setCountrySelect] = useState('');
@@ -19,27 +35,41 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-  const [passwordValid, setPasswordValid] = useState(false);
-  const [emailValid, setEmailValid] = useState(false);
-  const [phoneValid, setPhoneValid] = useState(false);
-  const [addressValid, setAddressValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(true);
+  const [phoneValid, setPhoneValid] = useState(true);
+  const [addressValid, setAddressValid] = useState(true);
+  const { signUpSuccess } = useSelector(selectUsers);
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    let values = {
-      email,
-      password,
-      phone,
-      street_address: address,
-      country: countrySelect.name,
-      state: stateSelect.name,
-      city: citySelect.name
-    };
+    if (!passwordValid) {
+      Toast.fire({
+        icon: 'error',
+        title: 'Please check your password'
+      });
+    }
     if (passwordValid && phoneValid && addressValid) {
-      const action = signUp;
-      dispatch(action(values));
+      let values = {
+        email,
+        password,
+        country: countrySelect.name,
+        street_address: address,
+        city: citySelect.name,
+        state: stateSelect.name,
+        phone
+      };
+
+      dispatch(signUpAction(values));
     }
   };
+  useEffect(() => {
+    if (signUpSuccess) {
+      console.log('a');
+      navigate('/login');
+    }
+  }, [signUpSuccess]);
   return (
     <Fragment>
       <div className="sign-up__wrap">
@@ -57,16 +87,15 @@ export default function SignUp() {
                   variant="outlined"
                   error={!emailValid}
                   value={email}
-                  onBlur={(e) => {
-                    const regExp = regExpEmail;
-                    if (regExp.test(e.target.value)) {
+                  onBlur={(e) => {}}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+
+                    if (regExpEmail.test(email)) {
                       setEmailValid(true);
                     } else {
                       setEmailValid(false);
                     }
-                  }}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
                   }}
                   required
                   type="email"
@@ -198,7 +227,9 @@ export default function SignUp() {
               </div>
             </div>
             <div className="sign-up-data__submit">
-              <button className="btn">Sign Up</button>
+              <button type="submit" className="btn">
+                Sign Up
+              </button>
             </div>
           </form>
         </div>

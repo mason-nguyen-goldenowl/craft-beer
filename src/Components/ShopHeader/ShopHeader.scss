@@ -5,14 +5,49 @@
     height: 60vh;
     background-image: url(../../asset/shop/titlearea-background-1.jpg);
     width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
   &__nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
+    // padding: 0 50;px;
+    .acount {
+      margin-right: 30px;
+      font-size: 18px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 20px;
+      .email {
+        margin-right: 10px;
+        padding-right: 10px;
+        border-right: 1px solid white;
+      }
+      &__btn {
+        margin: 0 10px;
+      }
+    }
+    .acount {
+      font-size: 20px;
+      margin-right: 30px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    .acount__btn {
+      transition: all 0.3s;
+
+      &:hover {
+        color: $main-color;
+        cursor: pointer;
+      }
+    }
 
     &-logo {
+      text-align: center;
       img {
         width: 50%;
       }

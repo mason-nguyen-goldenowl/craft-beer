@@ -10,6 +10,7 @@ import ShopHeader from '../../Components/ShopHeader/ShopHeader';
 import SuggestProductCard from '../../Components/SuggestProductCard/SuggestProductCard';
 import { getCartAction, getProduct } from '../../redux/actions/productAction';
 import { selectProducts } from '../../redux/features/productsSlice';
+import Cookies from 'js-cookie';
 
 export default function Shop() {
   const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
@@ -24,7 +25,7 @@ export default function Shop() {
   const renderSuggest = () => {
     const productSuggest = products.slice(0, 3);
     return productSuggest.map((product) => {
-      return <SuggestProductCard product={product} key={product.name} />;
+      return <SuggestProductCard product={product} key={product.id} />;
     });
   };
 

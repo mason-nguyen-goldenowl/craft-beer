@@ -31,9 +31,9 @@ export default function AdminLogin() {
 
   useEffect(() => {
     if (isAdmin && refreshToken) {
-      return navigate('/admin');
+      navigate('/admin');
     }
-  }, []);
+  }, [isAdmin, refreshToken]);
 
   return (
     <Fragment>
@@ -54,6 +54,7 @@ export default function AdminLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               label="Password"
+              type="password"
             />
           </div>
           <div className="admin-login__form__item-submit">

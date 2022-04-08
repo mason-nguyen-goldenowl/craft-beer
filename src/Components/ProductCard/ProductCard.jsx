@@ -1,25 +1,52 @@
-import React from 'react';
-import productImg from '../../asset/shop/shop-img-1-2.png';
-
-import { FaShoppingBasket, FaEye } from 'react-icons/fa';
 import './ProductCard.scss';
+
 import Cookies from 'js-cookie';
+import React, { useState } from 'react';
+import { FaEye, FaShoppingBasket } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addToCart, getCartAction } from '../../redux/actions/productAction';
-import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
+
+import { addToCart, getCartAction, increasingCartItem } from '../../redux/actions/productAction';
+import { selectProducts } from '../../redux/features/productsSlice';
+import Modal from '../Modal/Modal';
+import Productdetail from '../ProductDetail/ProductDetail';
+
 export default function ProductCard({ product }) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom',
+    showConfirmButton: false,
+    timer: 3000,
+    color: '#dab879',
+    iconColor: '#dab879',
+    background: '#000',
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    }
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { cartItems } = useSelector(selectProducts);
   const isLogged = Cookies.get('isLogged');
   const refreshToken = Cookies.get('refresh_token');
+  const [openModal, setOpenModal] = useState(false);
   const addProductToCart = () => {
     if (!isLogged || !refreshToken) {
       navigate('/login');
     } else {
-      const action = addToCart;
-
-      dispatch(action(product.id));
-      dispatch(getCartAction());
+      const cartItemExits = cartItems.find((item) => item.product.id === product.id);
+      if (cartItemExits) {
+        dispatch(increasingCartItem(cartItemExits.id));
+        Toast.fire({
+          icon: 'success',
+          title: 'This product in cart have been increased'
+        });
+      } else {
+        dispatch(addToCart(product.id));
+      }
     }
   };
   return (
@@ -31,20 +58,39 @@ export default function ProductCard({ product }) {
           </div>
           <div className="product-card__content">
             <p className="product-card__content-name">{product.name}</p>
-            <p className="product-card__content-price">${product.price.toLocaleString()}</p>
+            <p className="product-card__content-price">
+              {product.sold_out ? (
+                <span className="sold-out">Sold out</span>
+              ) : (
+                `$${product.price.toLocaleString()}`
+              )}
+            </p>
           </div>
 
           <div className="overlay">
             <div className="product-card__feature">
-              <div className="product-card__feature-item" onClick={addProductToCart}>
-                <FaShoppingBasket />
-              </div>
-              <div className="product-card__feature-item">
+              {product.sold_out ? (
+                <div></div>
+              ) : (
+                <div className="product-card__feature-item" onClick={addProductToCart}>
+                  <FaShoppingBasket />
+                </div>
+              )}
+
+              <div
+                className="product-card__feature-item"
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              >
                 <FaEye />
               </div>
             </div>
           </div>
         </div>
+        {openModal && (
+          <Modal children={<Productdetail product={product} setOpenModal={setOpenModal} />} />
+        )}
       </div>
     </div>
   );

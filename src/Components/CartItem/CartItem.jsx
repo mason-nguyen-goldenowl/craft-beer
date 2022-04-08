@@ -2,6 +2,7 @@ import './CartItem.scss';
 
 import React, { Fragment, useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 
 import {
   decreasingCartItem,
@@ -9,10 +10,10 @@ import {
   getCartAction,
   increasingCartItem
 } from '../../redux/actions/productAction';
-import { useDispatch } from 'react-redux';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
+  useEffect(() => {}, [item]);
   return (
     <Fragment>
       <div className="cart-item__wrap">
@@ -28,7 +29,6 @@ const CartItem = ({ item }) => {
                 className="change-quantity"
                 onClick={() => {
                   dispatch(decreasingCartItem(item.id));
-                  dispatch(getCartAction());
                 }}
               >
                 -
@@ -38,7 +38,6 @@ const CartItem = ({ item }) => {
                 className="change-quantity"
                 onClick={() => {
                   dispatch(increasingCartItem(item.id));
-                  dispatch(getCartAction());
                 }}
               >
                 +
@@ -53,7 +52,6 @@ const CartItem = ({ item }) => {
               className="cart-item__delete"
               onClick={() => {
                 dispatch(deleteCartItem(item.id));
-                dispatch(getCartAction());
               }}
             >
               <FaTrash />

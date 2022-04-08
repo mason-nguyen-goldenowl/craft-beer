@@ -22,9 +22,13 @@
     position: relative;
     &-name {
       color: $black;
+      font-weight: 500;
+      letter-spacing: 2px;
     }
     &-price {
       color: $main-color;
+      font-size: 18px;
+      font-weight: 500;
     }
   }
   &__feature {
@@ -71,5 +75,10 @@
     top: 0;
     background-color: rgba(0, 0, 0, 0.356);
     transition: all 0.3s;
+  }
+
+  .sold-out {
+    color: red;
+    font-weight: 500;
   }
 }

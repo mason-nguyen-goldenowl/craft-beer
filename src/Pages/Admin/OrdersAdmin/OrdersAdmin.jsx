@@ -1,18 +1,25 @@
 import React, { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ListItemAdmin from '../../../Components/ListItemAdmin/ListItemAdmin';
-import { getOrders } from '../../../redux/actions/productAction';
+import OrdersTable from '../../../Components/OrdersTable/OrdersTable';
+import { getOrdersAction } from '../../../redux/actions/productAction';
+import { selectProducts } from '../../../redux/features/productsSlice';
+import './OrderAdmin.scss';
 
 export default function OrdersAdmin() {
   const dispatch = useDispatch();
-
+  const { orders } = useSelector(selectProducts);
+  console.log(orders);
   useEffect(() => {
-    const action = getOrders;
-    dispatch(action());
+    dispatch(getOrdersAction());
   }, []);
   return (
     <Fragment>
-      <ListItemAdmin />
+      <div className="order-admin__wrap">
+        <ListItemAdmin />
+
+        <OrdersTable orders={orders} />
+      </div>
     </Fragment>
   );
 }

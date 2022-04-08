@@ -20,9 +20,10 @@ export default function Cart({ active, setActive }) {
   const renderCartItem = () => {
     return cartItems.map((cartItem) => {
       total += cartItem.quantity * cartItem.product.price;
-      return <CartItem item={cartItem} key={cartItem.id} />;
+      return <CartItem item={cartItem} key={cartItem.name} />;
     });
   };
+
   return (
     <Fragment>
       <div ref={cartRef} className={`cart__wrap ${active}`}>
@@ -48,6 +49,7 @@ export default function Cart({ active, setActive }) {
             onClick={() => {
               dispatch(createOrder());
               dispatch(getCartAction());
+              setActive('');
             }}
           >
             Checkout

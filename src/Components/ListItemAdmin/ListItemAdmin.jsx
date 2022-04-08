@@ -41,7 +41,7 @@ export default function ListItemAdmin() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <Box sx={{ display: 'flex', height: '100vh' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', height: '100%' }}>
       <ThemeProvider
         theme={createTheme({
           components: {

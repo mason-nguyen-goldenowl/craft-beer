@@ -1,20 +1,32 @@
 import './ShopHeader.scss';
 
-import React, { Fragment, useState } from 'react';
-import { FaSearch, FaShoppingBasket } from 'react-icons/fa';
+import Cookies from 'js-cookie';
+import React, { Fragment, useEffect, useState } from 'react';
+import { FaShoppingBasket } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../asset/shop/h1-logo-img-1.png';
-import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
+import { selectUsers } from '../../redux/features/userSlice';
 import Cart from '../Cart/Cart';
+import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
+import { logOutAction } from '../../redux/actions/usersAction';
 
 export default function ShopHeader() {
   const [subMenuActive, setSubMenuActive] = useState('');
   const [cartActive, setCartActive] = useState('');
+  const dispatch = useDispatch();
+
+  const { isLoggedSusscess, email } = useSelector(selectUsers);
   const onClickActiveCart = () => {
     setCartActive('active');
   };
   const onClickActiveSubMenu = () => {
     setSubMenuActive('active');
+  };
+
+  const onClickLogOut = () => {
+    dispatch(logOutAction());
   };
 
   return (
@@ -41,9 +53,25 @@ export default function ShopHeader() {
           </div>
           <div className="shop-header__nav-icon">
             <ul>
-              <li className="nav__icon">
-                <FaSearch />
-              </li>
+              {isLoggedSusscess ? (
+                <li className="acount">
+                  <span className="email">{email} </span>
+                  <span className="logout acount__btn" onClick={onClickLogOut}>
+                    Log out
+                  </span>
+                </li>
+              ) : (
+                <li className="acount">
+                  <Link to="/login" className="acount__btn">
+                    Login
+                  </Link>
+                  /
+                  <Link to="/signup" className="acount__btn">
+                    SignUp
+                  </Link>
+                </li>
+              )}
+
               <li className="nav__icon" onClick={onClickActiveCart}>
                 <FaShoppingBasket />
               </li>
@@ -51,7 +79,7 @@ export default function ShopHeader() {
           </div>
         </div>
         <div className="shop-header__content">
-          <h1 className="shop-header__content-text">MASON BREWERY</h1>
+          <h1 className="shop-header__content-text">MASON LIQUOR</h1>
         </div>
       </div>
     </Fragment>

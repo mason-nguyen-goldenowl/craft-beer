@@ -3,7 +3,8 @@ export const userSlice = createSlice({
   name: 'users',
   initialState: {
     signUpSuccess: false,
-    isDisableLogginBTN: false
+    isLoggedSusscess: false,
+    email: localStorage.getItem('email')
   },
   reducers: {
     signUp(state, action) {
@@ -11,11 +12,14 @@ export const userSlice = createSlice({
     },
 
     logging(state, action) {
-      state.isDisableLogginBTN = action.payload.isDisableLogginBTN;
+      state.isLoggedSusscess = action.payload.isLogged;
+    },
+    logOut(state, action) {
+      state.isLoggedSusscess = false;
     }
   }
 });
 
 export const selectUsers = (state) => state.users;
-export const { signUp, logging } = userSlice.actions;
+export const { signUp, logging, logOut } = userSlice.actions;
 export default userSlice.reducer;
