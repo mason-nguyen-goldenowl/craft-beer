@@ -13,6 +13,7 @@ export const userSlice = createSlice({
 
     logging(state, action) {
       state.isLoggedSusscess = action.payload.isLogged;
+      state.email = action.payload.email;
     },
     logOut(state, action) {
       state.isLoggedSusscess = false;

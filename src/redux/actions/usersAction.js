@@ -21,7 +21,7 @@ export const signIn = (user) => {
   return async (dispatch) => {
     try {
       const result = await craftBeerApi.signIn(user);
-
+      console.log(user);
       dispatch(logging({ isLogged: true }));
       Toast.fire({
         icon: 'success',
@@ -37,7 +37,7 @@ export const signIn = (user) => {
         Cookies.set('isAdmin', result.user.is_admin);
       }
     } catch (error) {
-      dispatch(logging({ isLogged: false }));
+      dispatch(logging({ isLogged: false, email: result.user.email }));
       Toast.fire({
         icon: 'error',
         title: 'Please check your information'
@@ -65,9 +65,9 @@ export const logOutAction = () => {
   return async (dispatch) => {
     try {
       Cookies.remove('isLogged');
-      Cookies.remove('email');
       Cookies.remove('refresh_token');
       localStorage.clear();
+      console.log('first');
       dispatch(logOut());
     } catch (error) {
       console.log(error);

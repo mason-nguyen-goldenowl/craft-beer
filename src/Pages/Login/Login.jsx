@@ -34,9 +34,9 @@ export default function Login() {
 
   useEffect(() => {
     if (isLogged && refreshToken) {
-      navigate('/');
+      return navigate('/');
     }
-  }, [isLogged, navigate, refreshToken, isLoggedSusscess]);
+  }, [isLogged, refreshToken]);
   return (
     <Fragment>
       <div className="login__wrap">

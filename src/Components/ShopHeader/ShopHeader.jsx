@@ -12,7 +12,7 @@ import Cart from '../Cart/Cart';
 import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
 import { logOutAction } from '../../redux/actions/usersAction';
 
-export default function ShopHeader() {
+export default function ShopHeader({ isLogged, setIsLogged }) {
   const [subMenuActive, setSubMenuActive] = useState('');
   const [cartActive, setCartActive] = useState('');
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ export default function ShopHeader() {
   };
 
   const onClickLogOut = () => {
+    setIsLogged(false);
     dispatch(logOutAction());
   };
 

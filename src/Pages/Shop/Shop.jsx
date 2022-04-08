@@ -1,6 +1,6 @@
 import './Shop.scss';
 
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ export default function Shop() {
   const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
   const dispatch = useDispatch();
   const { products } = useSelector(selectProducts);
-
+  const [isLogged, setIsLogged] = useState(Cookies.get('isLogged'));
   const renderProduct = () => {
     return products.map((product) => {
       return <ProductCard product={product} key={product.name} />;
@@ -28,7 +28,7 @@ export default function Shop() {
       return <SuggestProductCard product={product} key={product.id} />;
     });
   };
-
+  console.log('first');
   useEffect(() => {
     const action = getProduct;
     dispatch(action());
@@ -36,7 +36,7 @@ export default function Shop() {
   }, []);
   return (
     <Fragment>
-      <ShopHeader />
+      <ShopHeader isLogged={isLogged} setIsLogged={setIsLogged} />
       <div className="shop__wrap">
         <div className="shop__content container">
           <div className="shop__products">{renderProduct()}</div>
