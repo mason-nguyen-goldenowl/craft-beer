@@ -66,7 +66,6 @@ export default function SignUp() {
   };
   useEffect(() => {
     if (signUpSuccess) {
-      console.log('a');
       navigate('/login');
     }
   }, [signUpSuccess]);

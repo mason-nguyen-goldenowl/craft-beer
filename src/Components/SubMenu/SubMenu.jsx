@@ -6,7 +6,6 @@ import subMenuLogo from '../../asset/header/h5-logo-menu.png';
 import './SubMenu.scss';
 
 export default function SubMenu(props) {
-  console.log(props);
   return (
     <div className={`sub-menu__wrap ${props.active}`}>
       <div className="sub-menu">

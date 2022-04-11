@@ -9,7 +9,7 @@ import './OrderAdmin.scss';
 export default function OrdersAdmin() {
   const dispatch = useDispatch();
   const { orders } = useSelector(selectProducts);
-  console.log(orders);
+
   useEffect(() => {
     dispatch(getOrdersAction());
   }, []);

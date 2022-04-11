@@ -26,7 +26,6 @@ export const craftBeerApi = {
   },
 
   signUp: (user) => {
-    console.log(user);
     return axiosClient.post('/users/signup', user);
   },
 

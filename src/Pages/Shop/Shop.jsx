@@ -28,7 +28,7 @@ export default function Shop() {
       return <SuggestProductCard product={product} key={product.id} />;
     });
   };
-  console.log('first');
+
   useEffect(() => {
     const action = getProduct;
     dispatch(action());

@@ -69,7 +69,7 @@ export const logOutAction = () => {
       Cookies.remove('refresh_token');
       Cookies.remove('email');
       localStorage.clear();
-      console.log('first');
+
       dispatch(logOut());
     } catch (error) {
       console.log(error);
