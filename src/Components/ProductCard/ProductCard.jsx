@@ -6,7 +6,7 @@ import { FaEye, FaShoppingBasket } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import { motion } from 'framer-motion';
 import { addToCart, getCartAction, increasingCartItem } from '../../redux/actions/productAction';
 import { selectProducts } from '../../redux/features/productsSlice';
 import Modal from '../Modal/Modal';
@@ -49,8 +49,16 @@ export default function ProductCard({ product }) {
       }
     }
   };
+
   return (
-    <div>
+    <motion.div
+      animate={{ x: 100, y: 100, opacity: 1 }}
+      transition={{
+        delay: 1,
+        x: { type: 'spring', stiffness: 100 },
+        default: { duration: 2 }
+      }}
+    >
       <div className="product-card">
         <div className="product-card__wrap">
           <div className="product-card__img">
@@ -92,6 +100,6 @@ export default function ProductCard({ product }) {
           <Modal children={<Productdetail product={product} setOpenModal={setOpenModal} />} />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
