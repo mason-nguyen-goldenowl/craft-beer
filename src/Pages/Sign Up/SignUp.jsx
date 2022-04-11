@@ -5,7 +5,7 @@ import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/mater
 import { City, Country, State } from 'country-state-city';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { signUpAction } from '../../redux/actions/usersAction';
 import { selectUsers } from '../../redux/features/userSlice';
@@ -230,6 +230,12 @@ export default function SignUp() {
               <button type="submit" className="btn">
                 Sign Up
               </button>
+              <p>
+                Already have an account? Please
+                <Link to="/login">
+                  <span className="sign-up__login"> Login</span>
+                </Link>
+              </p>
             </div>
           </form>
         </div>

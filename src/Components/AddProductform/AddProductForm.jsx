@@ -138,7 +138,7 @@ export default function AddProductForm({ setModalOpen, selected, setSelected }) 
           </div>
         </div>
         <button type="submit" className="btn add-product__submit-btn">
-          Create
+          {selected ? <span>Update</span> : <span>Create</span>}
         </button>
 
         <button

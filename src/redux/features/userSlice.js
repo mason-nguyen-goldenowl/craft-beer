@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 export const userSlice = createSlice({
   name: 'users',
   initialState: {
     signUpSuccess: false,
-    isLoggedSusscess: false,
-    email: localStorage.getItem('email')
+    isLoggedSusscess: Cookies.get('isLogged'),
+    email: Cookies.get('email')
   },
   reducers: {
     signUp(state, action) {

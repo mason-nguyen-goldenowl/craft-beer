@@ -12,7 +12,7 @@ import Cart from '../Cart/Cart';
 import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
 import { logOutAction } from '../../redux/actions/usersAction';
 
-export default function ShopHeader({ isLogged, setIsLogged }) {
+export default function ShopHeader({ setIsLogged }) {
   const [subMenuActive, setSubMenuActive] = useState('');
   const [cartActive, setCartActive] = useState('');
   const dispatch = useDispatch();

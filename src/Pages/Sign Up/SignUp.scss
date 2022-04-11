@@ -41,5 +41,18 @@
         margin-right: 30px;
       }
     }
+
+    .sign-up-data__submit {
+      color: black;
+      display: flex;
+      align-items: center;
+      p {
+        margin-left: 20px;
+      }
+      span {
+        color: $main-color;
+        font-weight: 500;
+      }
+    }
   }
 }

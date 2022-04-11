@@ -5,16 +5,15 @@ import { TextField } from '@mui/material';
 import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { signIn } from '../../redux/actions/usersAction';
 import { regExpEmail } from '../../ultil/regExp/regExp';
 import { selectUsers } from '../../redux/features/userSlice';
 
 export default function Login() {
-  const refreshToken = Cookies.get('refresh_token');
-  const isLogged = Cookies.get('isLogged');
   const { isLoggedSusscess } = useSelector(selectUsers);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -27,16 +26,14 @@ export default function Login() {
       let values = { email, password };
       const action = signIn;
       dispatch(action(values));
-
-      navigate('/');
     }
   };
 
   useEffect(() => {
-    if (isLogged && refreshToken) {
+    if (isLoggedSusscess) {
       return navigate('/');
     }
-  }, [isLogged, refreshToken]);
+  }, [isLoggedSusscess]);
   return (
     <Fragment>
       <div className="login__wrap">
@@ -92,6 +89,9 @@ export default function Login() {
             </div>
             <div className="login-data__submit">
               <button className="btn">Sign In</button>
+              <p>
+                Don't have acount? Please <Link to="/signup">Sign Up</Link>
+              </p>
             </div>
           </form>
         </div>

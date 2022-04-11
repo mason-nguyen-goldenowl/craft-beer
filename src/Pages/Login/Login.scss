@@ -27,4 +27,16 @@
       color: black;
     }
   }
+  .login-data__submit {
+    color: black;
+    display: flex;
+    align-items: center;
+    p {
+      margin-left: 10px;
+    }
+    a {
+      color: $main-color;
+      font-weight: 500;
+    }
+  }
 }
