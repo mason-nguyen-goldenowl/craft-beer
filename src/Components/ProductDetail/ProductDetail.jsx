@@ -1,9 +1,12 @@
+import './ProductDetail.scss';
+
 import React, { useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+
 import useOnClickOutside from '../../hook/useClickOutside';
-import { addToCart, getCartAction } from '../../redux/actions/productAction';
-import './ProductDetail.scss';
+import { addToCart } from '../../redux/actions/productAction';
+import { motion } from 'framer-motion';
 const Productdetail = ({ product, setOpenModal }) => {
   const dispatch = useDispatch();
   const productDetailRef = useRef();
@@ -11,7 +14,13 @@ const Productdetail = ({ product, setOpenModal }) => {
     setOpenModal(false);
   });
   return (
-    <div className="product-detail__wrap" ref={productDetailRef}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="product-detail__wrap"
+      ref={productDetailRef}
+    >
       <div className="product-detail">
         <div className="product-detail__img">
           <img src={`${process.env.REACT_APP_API}/${product.image_url}`} alt="" />
@@ -46,7 +55,7 @@ const Productdetail = ({ product, setOpenModal }) => {
       >
         <FaTimes />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

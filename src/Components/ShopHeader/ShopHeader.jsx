@@ -1,16 +1,16 @@
 import './ShopHeader.scss';
 
-import Cookies from 'js-cookie';
+import { motion } from 'framer-motion';
 import React, { Fragment, useEffect, useState } from 'react';
 import { FaShoppingBasket } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logo from '../../asset/shop/h1-logo-img-1.png';
+import { logOutAction } from '../../redux/actions/usersAction';
 import { selectUsers } from '../../redux/features/userSlice';
 import Cart from '../Cart/Cart';
 import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
-import { logOutAction } from '../../redux/actions/usersAction';
 
 export default function ShopHeader({ setIsLogged }) {
   const [subMenuActive, setSubMenuActive] = useState('');
@@ -33,10 +33,16 @@ export default function ShopHeader({ setIsLogged }) {
   return (
     <Fragment>
       <ShopHeaderSub setActive={setSubMenuActive} active={subMenuActive} />
+
       <Cart active={cartActive} setActive={setCartActive} />
       <div className="shop-header__wrap">
         <div className="shop-header__nav">
-          <div className="shop-header__nav-menu">
+          <motion.div
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="shop-header__nav-menu"
+          >
             <ul>
               <li className="nav__item">
                 <span className="nav__item-content">Home</span>{' '}
@@ -48,11 +54,21 @@ export default function ShopHeader({ setIsLogged }) {
                 <span className="nav__item-content">Contact</span>
               </li>
             </ul>
-          </div>
-          <div className="shop-header__nav-logo">
+          </motion.div>
+          <motion.div
+            initial={{ translateY: -200 }}
+            animate={{ translateY: 0 }}
+            transition={{ duration: 1.5 }}
+            className="shop-header__nav-logo"
+          >
             <img src={logo} alt="" />
-          </div>
-          <div className="shop-header__nav-icon">
+          </motion.div>
+          <motion.div
+            className="shop-header__nav-icon"
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+          >
             <ul>
               {isLoggedSusscess ? (
                 <li className="acount">
@@ -77,11 +93,16 @@ export default function ShopHeader({ setIsLogged }) {
                 <FaShoppingBasket />
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
-        <div className="shop-header__content">
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="shop-header__content"
+        >
           <h1 className="shop-header__content-text">MASON LIQUOR</h1>
-        </div>
+        </motion.div>
       </div>
     </Fragment>
   );

@@ -2,10 +2,9 @@
 .side-area {
   &__wrap.active {
     transform: translateX(0);
-    transition: all 0.3s ease-in-out;
   }
   &__wrap {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
     z-index: 99;
     position: fixed;
     background-color: #0f0f0f;
@@ -14,6 +13,7 @@
     padding: 10vh 5vh;
     display: flex;
     align-items: center;
+    transition: all 0.3s ease-in-out;
   }
 
   &__content {

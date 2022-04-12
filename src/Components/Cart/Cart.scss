@@ -6,10 +6,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  z-index: 99;
   &__wrap.active {
     transform: translateX(0);
-    transition: all 0.5s;
   }
   &-close {
     font-size: 30px;
@@ -30,6 +29,7 @@
     background-color: #fcfaf7;
     z-index: 99;
     padding: 80px 50px;
+    transition: all 0.5s ease-in-out;
   }
   &-list {
     height: 75vh;
