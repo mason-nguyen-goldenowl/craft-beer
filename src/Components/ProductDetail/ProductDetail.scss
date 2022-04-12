@@ -3,6 +3,14 @@
 .product-detail {
   display: flex;
   max-width: 800px;
+
+  &__feature {
+    .btn {
+      @include tablet {
+        letter-spacing: 1px;
+      }
+    }
+  }
   &__img {
     max-width: 50%;
     display: flex;
@@ -12,6 +20,10 @@
     border-right: 1px solid $main-color;
     img {
       max-width: 400px;
+
+      @include tablet {
+        max-width: 150px;
+      }
     }
   }
 
@@ -20,20 +32,35 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-
       margin-left: 50px;
-      max-width: 50%;
+
+      @include tablet {
+        max-width: 300px;
+      }
     }
 
     &-name {
       letter-spacing: 8px;
       font-size: 24px;
+      @include tablet {
+        // font-size: 16px;
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
     }
 
     &-description {
       letter-spacing: 3px;
       font-size: 16px;
       margin-top: 30px;
+      margin-bottom: 30px;
+      overflow-y: auto;
+      max-height: 300px;
+      @include tablet {
+        font-size: 14px;
+        margin-top: 20px;
+        letter-spacing: 1px;
+      }
     }
 
     &-price {
@@ -46,8 +73,16 @@
   &__wrap {
     background-color: $white;
     padding: 80px;
-    min-width: 900px;
+    min-width: 300px;
+    max-width: 900px;
+    width: fit-content;
     position: relative;
+    display: flex;
+    justify-content: center;
+    @include tablet {
+      padding: 50px;
+      width: 500px;
+    }
   }
 
   &__close {

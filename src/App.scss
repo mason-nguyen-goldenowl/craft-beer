@@ -11,6 +11,9 @@
 
 html {
   font-size: 100%;
+  @include tablet {
+    font-size: 80%;
+  }
 }
 
 body {
@@ -29,6 +32,9 @@ a {
 
 .container {
   padding: 200px 150px;
+  @include tablet {
+    padding: 150px 50px;
+  }
 }
 
 .btn {
@@ -38,6 +44,9 @@ a {
   cursor: pointer;
   transition: all 0.3s;
   font-weight: 500;
+  @include tablet {
+    padding: 10px 23px;
+  }
 }
 
 .btn-outline {

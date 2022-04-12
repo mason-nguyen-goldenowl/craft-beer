@@ -13,6 +13,11 @@
     display: flex;
     flex-wrap: wrap;
     padding-right: 50px;
+
+    @include tablet {
+      max-width: 100%;
+    }
+
     & :first-child {
       & ::before {
         content: '';
@@ -37,9 +42,16 @@
         opacity: 0.8;
       }
     }
+    @include mobile {
+      max-width: 100%;
+      width: 100%;
+    }
   }
   &__sub-menu {
     max-width: 20%;
+    @include tablet {
+      display: none;
+    }
     h4 {
       margin-bottom: 20px;
     }

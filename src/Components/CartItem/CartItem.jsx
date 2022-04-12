@@ -48,14 +48,14 @@ const CartItem = ({ item }) => {
 
           <div className="cart-item__sub-total">
             <div className="cart-item__sub-total-price">${item.product.price * item.quantity}</div>
-            <div
-              className="cart-item__delete"
-              onClick={() => {
-                dispatch(deleteCartItem(item.id));
-              }}
-            >
-              <FaTrash />
-            </div>
+          </div>
+          <div
+            className="cart-item__delete"
+            onClick={() => {
+              dispatch(deleteCartItem(item.id));
+            }}
+          >
+            <FaTrash />
           </div>
         </div>
       </div>

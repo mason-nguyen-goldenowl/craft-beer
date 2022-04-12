@@ -10,6 +10,7 @@
   padding-top: 5%;
   transform: translateX(-500px);
   transition: all 0.3s ease-in;
+
   &.active {
     transform: translateX(0);
   }
