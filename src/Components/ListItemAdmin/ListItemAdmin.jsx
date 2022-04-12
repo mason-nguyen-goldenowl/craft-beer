@@ -12,10 +12,11 @@ import Paper from '@mui/material/Paper';
 import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { FaTimes } from 'react-icons/fa';
 import AddProductForm from '../AddProductform/AddProductForm';
 import Modal from '../Modal/Modal';
 
+import './ListItemAdmin.scss';
 const data = [
   { icon: <Dns />, label: 'Products', link: '/admin/' },
   { icon: <PermMedia />, label: 'Add Product' },
@@ -36,12 +37,20 @@ const FireNav = styled(List)({
   }
 });
 
-export default function ListItemAdmin() {
+export default function ListItemAdmin({ setOpenListItem }) {
   const [open, setOpen] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', height: '100%' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', height: '100%', position: 'relative' }}>
+      <div
+        className="close-btn"
+        onClick={() => {
+          setOpenListItem(false);
+        }}
+      >
+        <FaTimes />
+      </div>
       <ThemeProvider
         theme={createTheme({
           components: {
@@ -62,6 +71,7 @@ export default function ListItemAdmin() {
           <FireNav component="nav" disablePadding>
             <ListItemButton component="a" href="/admin">
               <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon>
+
               <ListItemText
                 sx={{ my: 0 }}
                 primary="Craft Beer"

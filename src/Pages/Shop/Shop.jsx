@@ -38,7 +38,7 @@ export default function Shop() {
       scale: 1,
 
       transition: {
-        duration: 1.5,
+        duration: 0.5,
         linear: [0.17, 0.57, 0.83, 0.57],
         bounce: 0.25
       }

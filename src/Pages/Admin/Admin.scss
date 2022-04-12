@@ -2,6 +2,7 @@
 
 .products__wrap {
   display: flex;
+
   .add-product__btn {
     position: fixed;
     bottom: 20px;
@@ -17,4 +18,24 @@
       width: 50px;
     }
   }
+  .listItem__wrap {
+  }
+}
+
+.toggle-list {
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: rgb(5, 30, 52);
+  cursor: pointer;
+
+  svg {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+}
+.admin__wrap {
+  overflow-x: auto;
 }

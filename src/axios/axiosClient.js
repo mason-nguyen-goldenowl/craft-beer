@@ -31,7 +31,7 @@ axiosClient.interceptors.response.use(
     if (error.response.status === 401) {
       try {
         const rs = await axiosClient.post('/users/refresh', {
-          email: 'mason@gmail.com',
+          email: Cookies.get('email'),
           refreshToken: Cookies.get('refresh_token')
         });
 

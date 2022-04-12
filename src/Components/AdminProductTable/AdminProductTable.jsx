@@ -44,14 +44,14 @@ export default function AdminProductTable({ products, setSelected, setModalOpen,
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="right">Name</StyledTableCell>
-            <StyledTableCell align="right">Price</StyledTableCell>
-            <StyledTableCell align="right">Stock</StyledTableCell>
-            <StyledTableCell align="right">Description</StyledTableCell>
-            <StyledTableCell align="right">Information</StyledTableCell>
-            <StyledTableCell align="right">Category</StyledTableCell>
-            <StyledTableCell align="right">Image</StyledTableCell>
-            <StyledTableCell align="right">Feature</StyledTableCell>
+            <StyledTableCell align="left">Name</StyledTableCell>
+            <StyledTableCell align="left">Price</StyledTableCell>
+            <StyledTableCell align="left">Stock</StyledTableCell>
+            <StyledTableCell align="left">Description</StyledTableCell>
+            <StyledTableCell align="left">Information</StyledTableCell>
+            <StyledTableCell align="left">Category</StyledTableCell>
+            <StyledTableCell align="left">Image</StyledTableCell>
+            <StyledTableCell align="left">Feature</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -60,13 +60,13 @@ export default function AdminProductTable({ products, setSelected, setModalOpen,
               <StyledTableCell component="th" scope="row">
                 {product.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{product.price}</StyledTableCell>
-              <StyledTableCell align="right">{product.in_stock}</StyledTableCell>
-              <StyledTableCell align="right">{product.description}</StyledTableCell>
-              <StyledTableCell align="right">{product.information}</StyledTableCell>
-              <StyledTableCell align="right">{product.category}</StyledTableCell>
-              <StyledTableCell align="right">{product.image_url}</StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell align="left">{product.price}</StyledTableCell>
+              <StyledTableCell align="left">{product.in_stock}</StyledTableCell>
+              <StyledTableCell align="left">{product.description}</StyledTableCell>
+              <StyledTableCell align="left">{product.information}</StyledTableCell>
+              <StyledTableCell align="left">{product.category}</StyledTableCell>
+              <StyledTableCell align="left">{product.image_url}</StyledTableCell>
+              <StyledTableCell align="left">
                 <div className="row-feature">
                   <div
                     className="row-feature__icon"

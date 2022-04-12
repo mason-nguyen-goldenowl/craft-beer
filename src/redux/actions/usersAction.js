@@ -68,6 +68,7 @@ export const logOutAction = () => {
       Cookies.remove('isLogged');
       Cookies.remove('refresh_token');
       Cookies.remove('email');
+      Cookies.remove('isAdmin');
       localStorage.clear();
 
       dispatch(logOut());

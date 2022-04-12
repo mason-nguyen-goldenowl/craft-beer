@@ -19,10 +19,10 @@ export default function OrdersTable({ orders }) {
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
-            <TableCell align="right">User email</TableCell>
-            <TableCell align="right">Create</TableCell>
-            <TableCell align="right">Item | Quantity</TableCell>
-            <TableCell align="right">Total</TableCell>
+            <TableCell align="left">User email</TableCell>
+            <TableCell align="left">Create</TableCell>
+            <TableCell align="left">Item | Quantity</TableCell>
+            <TableCell align="left">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -31,14 +31,14 @@ export default function OrdersTable({ orders }) {
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell align="right">{row.user.email}</TableCell>
-              <TableCell align="right">{row.created_at}</TableCell>
-              <TableCell align="right">
+              <TableCell align="left">{row.user.email}</TableCell>
+              <TableCell align="left">{row.created_at}</TableCell>
+              <TableCell align="left">
                 {row.order_items.map((item) => {
                   return <p key={item.id}>{`${item.product.name} [ ${item.quantity} ]`}</p>;
                 })}
               </TableCell>
-              <TableCell align="right">${row.total}</TableCell>
+              <TableCell align="left">${row.total}</TableCell>
             </TableRow>
           ))}
         </TableBody>

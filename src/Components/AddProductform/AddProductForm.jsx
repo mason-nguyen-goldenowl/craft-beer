@@ -3,6 +3,7 @@ import './AddProductForm.scss';
 import { TextField } from '@mui/material';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 
+import { motion } from 'framer-motion';
 import CategorySelect from '../CategorySelect/CategorySelcet';
 import InformationSelect from '../InformationSelect/InformationSelect';
 import { useDispatch } from 'react-redux';
@@ -65,7 +66,12 @@ export default function AddProductForm({ setModalOpen, selected, setSelected }) 
   };
 
   return (
-    <div ref={addProductFormRef}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.2 }}
+      ref={addProductFormRef}
+    >
       <form onSubmit={handleSubmit} className="add-product__form">
         {selected ? <h2>Update Product</h2> : <h2>Create Product</h2>}
         <div className="add-product__wrap">
@@ -152,6 +158,6 @@ export default function AddProductForm({ setModalOpen, selected, setSelected }) 
           Close
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 }
