@@ -35,7 +35,9 @@ const Productdetail = ({ product, setOpenModal }) => {
             <div className="product-detail__content-name">
               <h2>{product.name}</h2>
             </div>
-            <div className="product-detail__content-price">${product.price.toLocaleString()}</div>
+            <div className="product-detail__content-price">
+              {isDisable ? 'Sold out' : `$${product.price.toLocaleString()}`}
+            </div>
             <div className="product-detail__content-description">{product.description}</div>
           </div>
 

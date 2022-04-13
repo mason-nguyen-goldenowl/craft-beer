@@ -57,6 +57,10 @@ export const productSlice = createSlice({
     },
     filterProduct(state, action) {
       state.arrFilter = action.payload.products;
+    },
+    clearCart(state, action) {
+      state.cartItems = [];
+      state.totalQuantity = 0;
     }
   }
 });
@@ -73,6 +77,7 @@ export const {
   addSelectTag,
   resetFilter,
   filterProduct,
-  deleteTag
+  deleteTag,
+  clearCart
 } = productSlice.actions;
 export default productSlice.reducer;

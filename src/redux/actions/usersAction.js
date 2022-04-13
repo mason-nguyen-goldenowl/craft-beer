@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import { craftBeerApi } from '../../axios/craftBeerApi';
+import { clearCart } from '../features/productsSlice';
 import { logging, logOut, signUp } from '../features/userSlice';
 
 const Toast = Swal.mixin({
@@ -70,7 +71,7 @@ export const logOutAction = () => {
       Cookies.remove('email');
       Cookies.remove('isAdmin');
       localStorage.clear();
-
+      dispatch(clearCart());
       dispatch(logOut());
     } catch (error) {
       console.log(error);
