@@ -40,13 +40,16 @@ export default function ShopHeader({ setIsLogged }) {
           <motion.div
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.5 }}
             className="shop-header__nav-menu"
           >
             <ul>
               <li className="nav__item">
-                <span className="nav__item-content">Home</span>{' '}
+                <Link to="/">
+                  <span className="nav__item-content">Home</span>{' '}
+                </Link>
               </li>
+
               <li className="nav__item">
                 <span className="nav__item-content">Shop</span>
               </li>
@@ -67,7 +70,7 @@ export default function ShopHeader({ setIsLogged }) {
             className="shop-header__nav-icon"
             animate={{ opacity: 1 }}
             initial={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.5 }}
           >
             <ul>
               {isLoggedSusscess ? (
@@ -98,7 +101,7 @@ export default function ShopHeader({ setIsLogged }) {
         <motion.div
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
           className="shop-header__content"
         >
           <h1 className="shop-header__content-text">MASON LIQUOR</h1>

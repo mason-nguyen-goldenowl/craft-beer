@@ -9,6 +9,10 @@ export const craftBeerApi = {
     return axiosClient.get('/products');
   },
 
+  getProductsByCategory: (category) => {
+    return axiosClient.get(`/products/${category}`);
+  },
+
   createProduct: (product) => {
     return axiosClient.post('/products', product);
   },

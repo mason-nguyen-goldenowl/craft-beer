@@ -1,30 +1,23 @@
-import './Shop.scss';
-
 import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import RangeSlider from '../../Components/RangeSlider/RangeSlider';
 import ShopHeader from '../../Components/ShopHeader/ShopHeader';
-import SuggestProductCard from '../../Components/SuggestProductCard/SuggestProductCard';
-import { getCartAction, getProduct } from '../../redux/actions/productAction';
+import { getCartAction, getProductsByCategoryAction } from '../../redux/actions/productAction';
 import { selectProducts } from '../../redux/features/productsSlice';
 
-export default function Shop() {
-  const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
+export default function Category() {
   const dispatch = useDispatch();
-  const { products } = useSelector(selectProducts);
+  const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
+  const { productsCategory } = useSelector(selectProducts);
+  const categoryParam = useParams('category');
   const [isLogged, setIsLogged] = useState(Cookies.get('isLogged'));
+  const param = categoryParam.category.replace(/%20/g, ' ');
 
-  const renderSuggest = () => {
-    const productSuggest = products.slice(0, 3);
-    return productSuggest.map((product) => {
-      return <SuggestProductCard product={product} key={product.id} />;
-    });
-  };
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -45,19 +38,21 @@ export default function Shop() {
       }
     }
   };
+
   const renderProduct = () => {
-    return products.map((product) => {
+    return productsCategory.map((product) => {
       return (
-        <motion.div variants={item} key={product.id}>
-          <ProductCard product={product} />
+        <motion.div variants={item}>
+          <ProductCard product={product} key={product.name} />
         </motion.div>
       );
     });
   };
+
   useEffect(() => {
-    dispatch(getProduct());
+    dispatch(getProductsByCategoryAction(param));
     dispatch(getCartAction());
-  }, []);
+  }, [param]);
   return (
     <Fragment>
       <ShopHeader isLogged={isLogged} setIsLogged={setIsLogged} />
@@ -69,7 +64,7 @@ export default function Shop() {
             initial="hidden"
             animate="visible"
           >
-            {renderProduct()}
+            {productsCategory.length === 0 ? <p>This category have no product</p> : renderProduct()}
           </motion.div>
           <div className="shop__sub-menu">
             <div className="shop__sub-menu__slider">
@@ -86,10 +81,6 @@ export default function Shop() {
                   );
                 })}
               </ul>
-            </div>
-            <div className="shop__sub-menu__top-suggest">
-              <h4>TOP SUGGEST</h4>
-              {renderSuggest()}
             </div>
           </div>
         </div>

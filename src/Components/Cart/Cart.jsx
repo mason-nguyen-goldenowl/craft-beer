@@ -20,7 +20,7 @@ export default function Cart({ active, setActive }) {
   const renderCartItem = () => {
     return cartItems.map((cartItem) => {
       total += cartItem.quantity * cartItem.product.price;
-      return <CartItem item={cartItem} key={cartItem.name} />;
+      return <CartItem item={cartItem} key={cartItem.id} />;
     });
   };
 

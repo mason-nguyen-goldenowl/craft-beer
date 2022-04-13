@@ -5,7 +5,8 @@ import {
   getCart,
   getOrders,
   getProducts,
-  increasingCartItemAction
+  increasingCartItemAction,
+  getProductsCategory
 } from '../features/productsSlice';
 import Swal from 'sweetalert2';
 const Toast = Swal.mixin({
@@ -175,6 +176,17 @@ export const createOrder = () => {
         title: 'Checkout successfully'
       });
       dispatch(getCartAction());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getProductsByCategoryAction = (category) => {
+  return async (dispatch) => {
+    try {
+      const result = await craftBeerApi.getProductsByCategory(category);
+      dispatch(getProductsCategory({ products: result }));
     } catch (error) {
       console.log(error);
     }
