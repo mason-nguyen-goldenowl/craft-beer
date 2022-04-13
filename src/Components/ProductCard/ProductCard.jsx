@@ -60,7 +60,7 @@ export default function ProductCard({ product }) {
           <div className="product-card__content">
             <p className="product-card__content-name">{product.name}</p>
             <p className="product-card__content-price">
-              {product.sold_out ? (
+              {product.in_stock === 0 ? (
                 <span className="sold-out">Sold out</span>
               ) : (
                 `$${product.price.toLocaleString()}`
@@ -70,7 +70,7 @@ export default function ProductCard({ product }) {
 
           <div className="overlay">
             <div className="product-card__feature">
-              {product.sold_out ? (
+              {product.in_stock === 0 ? (
                 <div></div>
               ) : (
                 <div className="product-card__feature-item" onClick={addProductToCart}>

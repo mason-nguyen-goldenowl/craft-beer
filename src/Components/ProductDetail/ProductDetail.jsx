@@ -14,6 +14,10 @@ const Productdetail = ({ product, setOpenModal }) => {
   useOnClickOutside(productDetailRef, () => {
     setOpenModal(false);
   });
+  let isDisable = false;
+  if (product.in_stock === 0) {
+    isDisable = true;
+  }
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
@@ -38,7 +42,7 @@ const Productdetail = ({ product, setOpenModal }) => {
           <div className="product-detail__feature">
             <button
               className="btn"
-              disabled={product.sold_out}
+              disabled={isDisable}
               onClick={() => {
                 dispatch(addToCart(product.id));
               }}
