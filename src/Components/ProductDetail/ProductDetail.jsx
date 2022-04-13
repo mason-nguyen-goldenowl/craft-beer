@@ -1,12 +1,13 @@
 import './ProductDetail.scss';
 
+import { motion } from 'framer-motion';
 import React, { useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 
 import useOnClickOutside from '../../hook/useClickOutside';
 import { addToCart } from '../../redux/actions/productAction';
-import { motion } from 'framer-motion';
+
 const Productdetail = ({ product, setOpenModal }) => {
   const dispatch = useDispatch();
   const productDetailRef = useRef();

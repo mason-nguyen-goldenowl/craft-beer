@@ -3,12 +3,13 @@ import './RangeSlider.scss';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import React, { useEffect, useState } from 'react';
+import { FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { filterProductAction } from '../../redux/actions/productAction';
 import { addSelectTag, deleteTag, selectProducts } from '../../redux/features/productsSlice';
-import { FaTimes } from 'react-icons/fa';
+
 function valuetext(value) {
   return value;
 }

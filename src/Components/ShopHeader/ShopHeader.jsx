@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../asset/shop/h1-logo-img-1.png';
 import { logOutAction } from '../../redux/actions/usersAction';
+import { selectProducts } from '../../redux/features/productsSlice';
 import { selectUsers } from '../../redux/features/userSlice';
 import Cart from '../Cart/Cart';
 import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
-import { selectProducts } from '../../redux/features/productsSlice';
 
 export default function ShopHeader({ setIsLogged }) {
   const [subMenuActive, setSubMenuActive] = useState('');

@@ -1,13 +1,12 @@
 import './CartItem.scss';
 
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 
 import {
   decreasingCartItem,
   deleteCartItem,
-  getCartAction,
   increasingCartItem
 } from '../../redux/actions/productAction';
 

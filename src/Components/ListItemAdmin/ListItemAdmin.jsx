@@ -1,3 +1,5 @@
+import './ListItemAdmin.scss';
+
 import Dns from '@mui/icons-material/Dns';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import PermMedia from '@mui/icons-material/PermMedia';
@@ -11,12 +13,12 @@ import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
 import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 import AddProductForm from '../AddProductform/AddProductForm';
 import Modal from '../Modal/Modal';
 
-import './ListItemAdmin.scss';
 const data = [
   { icon: <Dns />, label: 'Products', link: '/admin/' },
   { icon: <PermMedia />, label: 'Add Product' },

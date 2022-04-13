@@ -1,13 +1,13 @@
 import './AddProductForm.scss';
 
 import { TextField } from '@mui/material';
-import React, { Fragment, useEffect, useRef, useState } from 'react';
-
 import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { createProduct, updateProduct } from '../../redux/actions/productAction';
 import CategorySelect from '../CategorySelect/CategorySelcet';
 import InformationSelect from '../InformationSelect/InformationSelect';
-import { useDispatch } from 'react-redux';
-import { createProduct, updateProduct } from '../../redux/actions/productAction';
 
 export default function AddProductForm({ setModalOpen, selected, setSelected }) {
   const informations = [

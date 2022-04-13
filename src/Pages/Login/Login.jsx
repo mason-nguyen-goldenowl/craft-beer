@@ -2,14 +2,13 @@ import './Login.scss';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { TextField } from '@mui/material';
-import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { signIn } from '../../redux/actions/usersAction';
-import { regExpEmail } from '../../ultil/regExp/regExp';
 import { selectUsers } from '../../redux/features/userSlice';
+import { regExpEmail } from '../../ultil/regExp/regExp';
 
 export default function Login() {
   const { isLoggedSusscess } = useSelector(selectUsers);

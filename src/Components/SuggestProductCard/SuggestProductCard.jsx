@@ -1,6 +1,7 @@
 import './SuggestProductCard.scss';
 
 import React, { useState } from 'react';
+
 import Modal from '../Modal/Modal';
 import Productdetail from '../ProductDetail/ProductDetail';
 

@@ -5,9 +5,9 @@ import { FaTimes } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useOnClickOutside from '../../hook/useClickOutside';
-import CartItem from '../CartItem/CartItem';
-import { selectProducts } from '../../redux/features/productsSlice';
 import { createOrder, getCartAction } from '../../redux/actions/productAction';
+import { selectProducts } from '../../redux/features/productsSlice';
+import CartItem from '../CartItem/CartItem';
 
 export default function Cart({ active, setActive }) {
   const cartRef = useRef();

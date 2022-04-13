@@ -13,7 +13,6 @@
     "no-shadow": ["error", { "allow": ["err", "error"] }],
     "react/prefer-stateless-function": ["error", { "ignorePureComponents": true }],
 
-    // "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "no-underscore-dangle": "off",
     "guard-for-in": "off",
     "no-param-reassign": ["error", { "props": false }],

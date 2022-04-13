@@ -1,18 +1,18 @@
 import './Shop.scss';
 
+import { Pagination } from '@mui/material';
 import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import PaginationItem from '@mui/material/PaginationItem';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import RangeSlider from '../../Components/RangeSlider/RangeSlider';
 import ShopHeader from '../../Components/ShopHeader/ShopHeader';
 import SuggestProductCard from '../../Components/SuggestProductCard/SuggestProductCard';
 import { getCartAction, getProduct } from '../../redux/actions/productAction';
 import { resetFilter, selectProducts } from '../../redux/features/productsSlice';
-import { Pagination } from '@mui/material';
 
 export default function Shop() {
   const dispatch = useDispatch();
