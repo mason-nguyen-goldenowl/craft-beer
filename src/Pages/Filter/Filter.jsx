@@ -2,21 +2,19 @@ import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
 
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import RangeSlider from '../../Components/RangeSlider/RangeSlider';
 import ShopHeader from '../../Components/ShopHeader/ShopHeader';
-import { getCartAction, getProductsByCategoryAction } from '../../redux/actions/productAction';
+import { getCartAction } from '../../redux/actions/productAction';
 import { selectProducts } from '../../redux/features/productsSlice';
 
-export default function Category() {
+export default function Filter() {
   const dispatch = useDispatch();
-  const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
-  const { productsCategory } = useSelector(selectProducts);
-  const categoryParam = useParams('category');
+
+  const { arrFilter } = useSelector(selectProducts);
+
   const [isLogged, setIsLogged] = useState(Cookies.get('isLogged'));
-  const param = categoryParam.category.replace(/%20/g, ' ');
 
   const container = {
     hidden: { opacity: 1, scale: 0 },
@@ -40,9 +38,9 @@ export default function Category() {
   };
 
   const renderProduct = () => {
-    return productsCategory.map((product) => {
+    return arrFilter.map((product) => {
       return (
-        <motion.div variants={item}>
+        <motion.div variants={item} key={product.id}>
           <ProductCard product={product} key={product.name} />
         </motion.div>
       );
@@ -50,9 +48,8 @@ export default function Category() {
   };
 
   useEffect(() => {
-    dispatch(getProductsByCategoryAction(param));
     dispatch(getCartAction());
-  }, [param]);
+  }, []);
   return (
     <Fragment>
       <ShopHeader isLogged={isLogged} setIsLogged={setIsLogged} />
@@ -64,23 +61,11 @@ export default function Category() {
             initial="hidden"
             animate="visible"
           >
-            {productsCategory.length === 0 ? <p>This category have no product</p> : renderProduct()}
+            {arrFilter.length === 0 ? <p>This category have no product</p> : renderProduct()}
           </motion.div>
           <div className="shop__sub-menu">
             <div className="shop__sub-menu__slider">
               <RangeSlider />
-            </div>
-            <div className="shop__sub-menu__types">
-              <h4>DRINK TYPES</h4>
-              <ul className="types__list">
-                {category.map((cate) => {
-                  return (
-                    <Link key={cate} to={`/category/${cate}`}>
-                      <li className="types__list-item">{cate}</li>
-                    </Link>
-                  );
-                })}
-              </ul>
             </div>
           </div>
         </div>

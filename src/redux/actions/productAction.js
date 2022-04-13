@@ -6,7 +6,8 @@ import {
   getOrders,
   getProducts,
   increasingCartItemAction,
-  getProductsCategory
+  getProductsCategory,
+  filterProduct
 } from '../features/productsSlice';
 import Swal from 'sweetalert2';
 const Toast = Swal.mixin({
@@ -24,7 +25,19 @@ const Toast = Swal.mixin({
   }
 });
 
-export const getProduct = () => {
+export const getProduct = (page) => {
+  return async (dispatch) => {
+    try {
+      const result = await craftBeerApi.getProductsPagi(page);
+
+      dispatch(getProducts({ products: result.arrProduct, totalPage: result.totalPage }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getAllProduct = () => {
   return async (dispatch) => {
     try {
       const result = await craftBeerApi.getProducts();
@@ -35,11 +48,16 @@ export const getProduct = () => {
     }
   };
 };
+
 export const getCartAction = () => {
   return async (dispatch) => {
     try {
       const result = await craftBeerApi.getCart();
-      dispatch(getCart({ cartItems: result }));
+      let totalQuantity = 0;
+      result.map((item) => {
+        totalQuantity += item.quantity;
+      });
+      dispatch(getCart({ cartItems: result, totalQuantity }));
     } catch (error) {
       console.log(error);
     }
@@ -187,6 +205,17 @@ export const getProductsByCategoryAction = (category) => {
     try {
       const result = await craftBeerApi.getProductsByCategory(category);
       dispatch(getProductsCategory({ products: result }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const filterProductAction = (filter) => {
+  return async (dispatch) => {
+    try {
+      const result = await craftBeerApi.filterProduct(filter);
+      dispatch(filterProduct({ products: result }));
     } catch (error) {
       console.log(error);
     }

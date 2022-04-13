@@ -14,7 +14,7 @@ import AddProductForm from '../../Components/AddProductform/AddProductForm';
 import AdminProductTable from '../../Components/AdminProductTable/AdminProductTable';
 import ListItemAdmin from '../../Components/ListItemAdmin/ListItemAdmin';
 import Modal from '../../Components/Modal/Modal';
-import { getProduct } from '../../redux/actions/productAction';
+import { getAllProduct } from '../../redux/actions/productAction';
 import { selectProducts } from '../../redux/features/productsSlice';
 
 export default function Admin() {
@@ -31,8 +31,8 @@ export default function Admin() {
     if (!isAdmin || !refreshToken) {
       return navigate('/');
     }
-    const action = getProduct;
-    dispatch(action());
+
+    dispatch(getAllProduct());
   }, [products]);
   return (
     <Fragment>

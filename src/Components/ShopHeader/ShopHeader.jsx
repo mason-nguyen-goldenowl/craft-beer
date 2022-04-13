@@ -11,11 +11,13 @@ import { logOutAction } from '../../redux/actions/usersAction';
 import { selectUsers } from '../../redux/features/userSlice';
 import Cart from '../Cart/Cart';
 import ShopHeaderSub from '../ShopHeaderSub/ShopHeaderSub';
+import { selectProducts } from '../../redux/features/productsSlice';
 
 export default function ShopHeader({ setIsLogged }) {
   const [subMenuActive, setSubMenuActive] = useState('');
   const [cartActive, setCartActive] = useState('');
   const dispatch = useDispatch();
+  const { totalQuantity } = useSelector(selectProducts);
 
   const { isLoggedSusscess, email } = useSelector(selectUsers);
   const onClickActiveCart = () => {
@@ -92,8 +94,9 @@ export default function ShopHeader({ setIsLogged }) {
                 </li>
               )}
 
-              <li className="nav__icon" onClick={onClickActiveCart}>
+              <li className="nav__icon basket" onClick={onClickActiveCart}>
                 <FaShoppingBasket />
+                <span className="total-quantity">{totalQuantity}</span>
               </li>
             </ul>
           </motion.div>

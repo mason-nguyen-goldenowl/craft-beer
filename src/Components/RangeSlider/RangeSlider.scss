@@ -9,8 +9,43 @@
   &__submit {
     display: flex;
     align-items: center;
+    margin-bottom: 50px;
   }
   &__result {
     margin-left: 10px;
+  }
+
+  .selected-tag {
+    &__list {
+      display: flex;
+      max-height: 80px;
+      height: 80px;
+      max-width: 300px;
+      width: auto;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      margin-top: 10px;
+    }
+
+    &__item {
+      max-height: 30px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      background-color: $main-color;
+      padding: 2px 5px;
+      font-size: 12px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .delete-tag {
+        margin-left: 5px;
+        cursor: pointer;
+        color: $second-color;
+        &:hover {
+          color: black;
+        }
+      }
+    }
   }
 }

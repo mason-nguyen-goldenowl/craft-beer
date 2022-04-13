@@ -4,20 +4,22 @@ import { motion } from 'framer-motion';
 import Cookies from 'js-cookie';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import PaginationItem from '@mui/material/PaginationItem';
 import ProductCard from '../../Components/ProductCard/ProductCard';
 import RangeSlider from '../../Components/RangeSlider/RangeSlider';
 import ShopHeader from '../../Components/ShopHeader/ShopHeader';
 import SuggestProductCard from '../../Components/SuggestProductCard/SuggestProductCard';
 import { getCartAction, getProduct } from '../../redux/actions/productAction';
-import { selectProducts } from '../../redux/features/productsSlice';
+import { resetFilter, selectProducts } from '../../redux/features/productsSlice';
+import { Pagination } from '@mui/material';
 
 export default function Shop() {
-  const category = ['Bourbon', 'Fruit Liqueur', 'Liqueur', 'Skotch', 'Uncategorized', 'Whiskey'];
   const dispatch = useDispatch();
-  const { products } = useSelector(selectProducts);
+  const navigate = useNavigate();
+  const { products, totalPage } = useSelector(selectProducts);
   const [isLogged, setIsLogged] = useState(Cookies.get('isLogged'));
+  const pageParam = useParams();
 
   const renderSuggest = () => {
     const productSuggest = products.slice(0, 3);
@@ -55,9 +57,10 @@ export default function Shop() {
     });
   };
   useEffect(() => {
-    dispatch(getProduct());
+    dispatch(getProduct(pageParam.page));
     dispatch(getCartAction());
-  }, []);
+    dispatch(resetFilter());
+  }, [pageParam]);
   return (
     <Fragment>
       <ShopHeader isLogged={isLogged} setIsLogged={setIsLogged} />
@@ -70,23 +73,21 @@ export default function Shop() {
             animate="visible"
           >
             {renderProduct()}
+            <div className="pagination">
+              <Pagination
+                page={Number(pageParam.page)}
+                count={totalPage}
+                onChange={(e, page) => {
+                  navigate(`/page/${page}`);
+                }}
+              />
+            </div>
           </motion.div>
           <div className="shop__sub-menu">
             <div className="shop__sub-menu__slider">
               <RangeSlider />
             </div>
-            <div className="shop__sub-menu__types">
-              <h4>DRINK TYPES</h4>
-              <ul className="types__list">
-                {category.map((cate) => {
-                  return (
-                    <Link key={cate} to={`/category/${cate}`}>
-                      <li className="types__list-item">{cate}</li>
-                    </Link>
-                  );
-                })}
-              </ul>
-            </div>
+
             <div className="shop__sub-menu__top-suggest">
               <h4>TOP SUGGEST</h4>
               {renderSuggest()}

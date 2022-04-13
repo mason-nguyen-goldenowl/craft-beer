@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { increasingCartItem } from '../actions/productAction';
 
 export const productSlice = createSlice({
   name: 'products',
@@ -7,11 +6,16 @@ export const productSlice = createSlice({
     products: [],
     cartItems: [],
     orders: [],
-    productsCategory: []
+    productsCategory: [],
+    totalPage: 1,
+    selectedTag: [],
+    arrFilter: [],
+    totalQuantity: 0
   },
   reducers: {
     getProducts(state, action) {
       state.products = action.payload.products;
+      state.totalPage = action.payload.totalPage;
     },
     getProductsCategory(state, action) {
       state.productsCategory = action.payload.products;
@@ -19,6 +23,7 @@ export const productSlice = createSlice({
 
     getCart(state, action) {
       state.cartItems = action.payload.cartItems;
+      state.totalQuantity = action.payload.totalQuantity;
     },
 
     increasingCartItemAction(state, action) {
@@ -36,6 +41,22 @@ export const productSlice = createSlice({
     },
     getOrders(state, action) {
       state.orders = action.payload.orders;
+    },
+    addSelectTag(state, action) {
+      const tagexist = state.selectedTag.find((tag) => tag === action.payload.cate);
+      if (!tagexist) {
+        state.selectedTag.push(action.payload.cate);
+      }
+    },
+    deleteTag(state, action) {
+      state.selectedTag = state.selectedTag.filter((tag) => tag !== action.payload.tag);
+    },
+    resetFilter(state) {
+      state.selectedTag = [];
+      state.arrFilter = [];
+    },
+    filterProduct(state, action) {
+      state.arrFilter = action.payload.products;
     }
   }
 });
@@ -48,6 +69,10 @@ export const {
   checkOut,
   decreasingCartItemAction,
   getOrders,
-  getProductsCategory
+  getProductsCategory,
+  addSelectTag,
+  resetFilter,
+  filterProduct,
+  deleteTag
 } = productSlice.actions;
 export default productSlice.reducer;

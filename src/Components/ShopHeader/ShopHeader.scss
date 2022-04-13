@@ -57,6 +57,7 @@
     ul {
       display: flex;
       list-style: none;
+      align-items: center;
     }
 
     .nav__item,
@@ -101,6 +102,27 @@
       font-size: 20px;
       &:hover {
         opacity: 0.5;
+      }
+    }
+    .basket {
+      position: relative;
+      svg {
+        font-size: 30px;
+      }
+      .total-quantity {
+        position: absolute;
+        font-weight: 500;
+        font-size: 16px;
+        background-color: $main-color;
+        border-radius: 100%;
+        text-align: center;
+        top: -10px;
+        right: -20px;
+        height: 25px;
+        width: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

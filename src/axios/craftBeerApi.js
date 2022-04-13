@@ -6,9 +6,14 @@ export const craftBeerApi = {
   },
 
   getProducts: () => {
-    return axiosClient.get('/products');
+    return axiosClient.get('/products/all');
   },
-
+  getProductsPagi: (page) => {
+    return axiosClient.get(page ? `/products/?page=${page}` : '/products');
+  },
+  filterProduct: (filter) => {
+    return axiosClient.post('/products/filter', filter);
+  },
   getProductsByCategory: (category) => {
     return axiosClient.get(`/products/${category}`);
   },
