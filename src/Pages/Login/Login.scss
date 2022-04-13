@@ -37,6 +37,10 @@
     a {
       color: $main-color;
       font-weight: 500;
+      transition: all 0.3s;
+      &:hover {
+        color: $second-color;
+      }
     }
   }
 }

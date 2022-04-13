@@ -42,6 +42,7 @@ export default function Login() {
               <LockOutlinedIcon />
             </div>
             <h4>LOGIN</h4>
+
             <div className="login__form-data">
               <div className="login__form-data__list">
                 <TextField
@@ -88,9 +89,14 @@ export default function Login() {
             </div>
             <div className="login-data__submit">
               <button className="btn">Sign In</button>
-              <p>
-                Don't have acount? Please <Link to="/signup">Sign Up</Link>
-              </p>
+              <div className="login-data__submit-text">
+                <p>
+                  Don't have acount? Please <Link to="/signup">Sign Up</Link>
+                </p>
+                <p>
+                  Back to <Link to="/">Homepage</Link>{' '}
+                </p>
+              </div>
             </div>
           </form>
         </div>

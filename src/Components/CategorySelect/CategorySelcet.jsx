@@ -23,7 +23,7 @@ export default function CategorySelect({ category, setCategory, setModalOpen }) 
           onChange={handleChange}
         >
           <MenuItem value={'Bourbon'}>Bourbon</MenuItem>
-          <MenuItem value={'Fruit'}>Fruit</MenuItem>
+          <MenuItem value={'Fruit Liqueur'}>Fruit Liqueur</MenuItem>
           <MenuItem value={'Liqueur'}>Liqueur</MenuItem>
           <MenuItem value={'Skotch'}>Skotch</MenuItem>
           <MenuItem value={'Uncategorized'}>Uncategorized</MenuItem>

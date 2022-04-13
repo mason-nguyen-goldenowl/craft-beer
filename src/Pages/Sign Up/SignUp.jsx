@@ -230,12 +230,21 @@ export default function SignUp() {
               <button type="submit" className="btn">
                 Sign Up
               </button>
-              <p>
-                Already have an account? Please
-                <Link to="/login">
-                  <span className="sign-up__login"> Login</span>
-                </Link>
-              </p>
+              <div className="">
+                <p>
+                  Already have an account? Please
+                  <Link to="/login">
+                    <span className="sign-up__login"> Login</span>
+                  </Link>
+                </p>
+                <p>
+                  Back to{' '}
+                  <Link to="/">
+                    {' '}
+                    <span className="sign-up__login"> Homepage</span>
+                  </Link>{' '}
+                </p>
+              </div>
             </div>
           </form>
         </div>
