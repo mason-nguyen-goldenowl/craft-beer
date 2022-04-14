@@ -1,0 +1,84 @@
+@use '../../scss/' as *;
+
+.product-card {
+  transition: all 0.3s;
+  &__wrap {
+    position: relative;
+    padding-bottom: 10px;
+    width: fit-content;
+    max-width: 350px;
+    margin-bottom: 30px;
+  }
+  &__img {
+    padding: 20px;
+    img {
+      max-width: 300px;
+      max-height: 300px;
+    }
+  }
+  &__content {
+    text-align: center;
+
+    position: relative;
+    &-name {
+      color: $black;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+    &-price {
+      color: $main-color;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  &__feature {
+    display: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    transition: all 0.3s;
+    svg {
+      color: $main-color;
+      transition: all 0.3s;
+    }
+    &-item {
+      margin-right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      border: 2px solid $second-color;
+      padding: 5px;
+      line-height: 30px;
+      &:hover {
+        svg {
+          color: white;
+        }
+      }
+    }
+  }
+  &:hover {
+    &__feature {
+      display: block;
+    }
+    .overlay {
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+  .overlay {
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.356);
+    transition: all 0.3s;
+  }
+
+  .sold-out {
+    color: red;
+    font-weight: 500;
+  }
+}

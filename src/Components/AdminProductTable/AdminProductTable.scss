@@ -1,0 +1,14 @@
+@use '../../scss/' as *;
+
+.row-feature {
+  display: flex;
+  justify-content: flex-end;
+  transition: all 0.3s;
+  &__icon {
+    margin-left: 20px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

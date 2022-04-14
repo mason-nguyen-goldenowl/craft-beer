@@ -1,0 +1,64 @@
+@use '../../scss/' as *;
+
+.sub-menu__wrap {
+  position: fixed;
+  height: 100vh;
+  width: 20vw;
+  background-color: $footer-home-bg;
+
+  text-align: center;
+  padding-top: 5%;
+  transform: translateX(-500px);
+  transition: all 0.3s ease-in;
+
+  &.active {
+    transform: translateX(0);
+  }
+  .sub-menu {
+    &__item {
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+      &.active {
+        &::after {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      &::after {
+        transition: all 0.2s ease-in;
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: $main-color;
+        width: 100%;
+        bottom: -10px;
+        left: 0;
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+    }
+
+    // &__item.active{
+
+    // }
+    &__list-item {
+      list-style: none;
+      &__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10vh;
+      }
+    }
+  }
+}

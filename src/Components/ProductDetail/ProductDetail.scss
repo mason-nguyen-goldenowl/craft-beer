@@ -1,0 +1,101 @@
+@use '../../scss/' as *;
+
+.product-detail {
+  display: flex;
+  max-width: 800px;
+
+  &__feature {
+    .btn {
+      @include tablet {
+        letter-spacing: 1px;
+      }
+    }
+  }
+  &__img {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $main-color;
+    border-right: 1px solid $main-color;
+    img {
+      max-width: 400px;
+
+      @include tablet {
+        max-width: 150px;
+      }
+    }
+  }
+
+  &__content {
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-left: 50px;
+
+      @include tablet {
+        max-width: 300px;
+      }
+    }
+
+    &-name {
+      letter-spacing: 8px;
+      font-size: 24px;
+      @include tablet {
+        // font-size: 16px;
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+    }
+
+    &-description {
+      letter-spacing: 3px;
+      font-size: 16px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      overflow-y: auto;
+      max-height: 300px;
+      @include tablet {
+        font-size: 14px;
+        margin-top: 20px;
+        letter-spacing: 1px;
+      }
+    }
+
+    &-price {
+      font-weight: 700;
+      font-size: 20px;
+      font-style: italic;
+      color: $second-color;
+    }
+  }
+  &__wrap {
+    background-color: $white;
+    padding: 80px;
+    min-width: 300px;
+    max-width: 900px;
+    width: fit-content;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    @include tablet {
+      padding: 50px;
+      width: 500px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 25px;
+    cursor: pointer;
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: none;
+    }
+  }
+}

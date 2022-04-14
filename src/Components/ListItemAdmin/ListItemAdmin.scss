@@ -1,0 +1,10 @@
+@use '../../scss/' as *;
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 99;
+  cursor: pointer;
+  font-size: 30px;
+}

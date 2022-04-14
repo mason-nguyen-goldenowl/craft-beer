@@ -1,0 +1,62 @@
+@use '../../scss/' as *;
+
+.sign-up {
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-logo {
+      background-color: $main-color;
+      width: fit-content;
+      border-radius: 50%;
+      line-height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+
+      svg {
+        font-size: 30px;
+      }
+    }
+
+    h4 {
+      margin-bottom: 30px;
+      font-size: 30px;
+      color: black;
+    }
+    &-data {
+      display: flex;
+      justify-content: center;
+      &__list {
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+      }
+    }
+
+    .sign-up-data__submit {
+      color: black;
+      display: flex;
+      align-items: center;
+      p {
+        margin-left: 20px;
+      }
+      span {
+        color: $main-color;
+        font-weight: 500;
+        transition: all 0.3s;
+        &:hover {
+          color: $second-color;
+        }
+      }
+    }
+  }
+}

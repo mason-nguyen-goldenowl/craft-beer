@@ -1,0 +1,52 @@
+@use '../../scss/' as *;
+
+.cart {
+  position: relative;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 99;
+  &__wrap.active {
+    transform: translateX(0);
+  }
+  &-close {
+    font-size: 30px;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    cursor: pointer;
+  }
+
+  &__wrap {
+    transform: translateX(100%);
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fcfaf7;
+    z-index: 99;
+    padding: 80px 50px;
+    transition: all 0.5s ease-in-out;
+  }
+  &-list {
+    height: 75vh;
+    padding-right: 20px;
+    max-width: 400px;
+    overflow-y: auto;
+  }
+  &-checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__btn {
+      margin-top: 15px;
+    }
+    &__price {
+      font-weight: 500;
+      font-size: 20px;
+    }
+  }
+}

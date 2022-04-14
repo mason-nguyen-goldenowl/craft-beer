@@ -1,0 +1,38 @@
+@use '../../scss/' as *;
+
+.suggest-card {
+  &:hover {
+    .suggest-card__img {
+      transform: scale(1.2);
+    }
+  }
+  &__wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    &-name {
+      transition: all 0.3s;
+      cursor: pointer;
+      font-weight: 500;
+      &:hover {
+        color: $main-color;
+      }
+    }
+    &-price {
+      color: $main-color;
+    }
+  }
+  &__img {
+    position: relative;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    img {
+      max-width: 100px;
+      max-height: 150px;
+    }
+  }
+}
